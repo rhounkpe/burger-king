@@ -72,7 +72,13 @@ module.exports = function(webpackEnv) {
       isEnvProduction && {
         loader: MiniCssExtractPlugin.loader,
         options: Object.assign(
-          {},
+          {
+            // Added my me
+            importLoaders: 1,
+            modules: true,
+            localIdentName: '[name]__[local]__[hash:base64:5]'
+            // end of what I added
+          },
           shouldUseRelativeAssetPaths ? { publicPath: '../../' } : undefined
         ),
       },
